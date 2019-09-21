@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductsService {
-  uri = "http://localhost:4000/products";
+  uri = "http://127.0.0.1:3000/products";
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +18,9 @@ export class ProductsService {
 
     this.http.post(`${this.uri}/add`, obj)
       .subscribe(resp => console.log("Done"));
+  }
+
+  getProducts() {
+    return this.http.get(`${this.uri}`);
   }
 }
