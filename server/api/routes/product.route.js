@@ -31,6 +31,19 @@ productRoutes.route("/").get(function (req, resp) {
 });
 
 /**
+ * get one api
+ */
+productRoutes.route("/edit/:id").get(function (req, resp) {
+    Product.findById(req.params.id, function (err, product){
+        if (!product) {
+            resp.status(404).send(err);
+        } else {
+            resp.json(product);
+        }
+    });
+});
+
+/**
  * update api
  */
 productRoutes.route("/update/:id").post(function (req, resp) {
